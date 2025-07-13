@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 
-
 const Login = () => {
 
   const [email, setEmail] = useState("");
@@ -18,8 +17,7 @@ const Login = () => {
         return;
       }
 
-      const res = await axios.post("http://localhost:8000/auth/login", {email, password}, {withCredentials : true})
-console.log(res);
+      const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/login`, {email, password}, {withCredentials : true})
 
       setMessage( res.data.message||"Login successful ");
 setTimeout(() => {

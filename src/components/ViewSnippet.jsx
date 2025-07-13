@@ -10,7 +10,7 @@ const ViewSnippet = () => {
 
   const getSnippet = async () => {
     try {
-      const res = await axios.get(`http://localhost:8000/snippets/${id}`, {
+      const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/snippets/${id}`, {
         withCredentials: true,
       });
       setSnippet(res.data.snippet);

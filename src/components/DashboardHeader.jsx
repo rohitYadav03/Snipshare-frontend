@@ -7,7 +7,7 @@ const DashboardHeader = () => {
    const navigate = useNavigate();
   const handleLogout = async () => {
     try {
-      const res = await axios.post("http://localhost:8000/auth/logout", {}, {
+      const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/logout`, {}, {
         withCredentials: true 
       });
       console.log(res.data.message); 

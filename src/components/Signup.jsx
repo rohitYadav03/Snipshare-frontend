@@ -12,7 +12,7 @@ const navigate = useNavigate();
 
 const handleSignup = async() => {
   try {
-    const res = await axios.post("http://localhost:8000/auth/signup", {name , email, password}, {
+    const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/signup`, {name , email, password}, {
     withCredentials : true
 })
 

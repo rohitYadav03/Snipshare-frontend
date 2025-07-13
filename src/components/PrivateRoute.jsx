@@ -8,7 +8,7 @@ const PrivateRoute = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/profile", {
+        const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/profile`, {
           withCredentials: true,
         });
        if (res.data?.message?.email) {

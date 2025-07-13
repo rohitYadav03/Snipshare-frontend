@@ -9,7 +9,7 @@ const MySnippets = () => {
 
   const getSnippet = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/snippets", {
+      const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/snippets`, {
         withCredentials: true,
       });
       setMySnippet(res.data.snippets || []);
@@ -25,7 +25,7 @@ const MySnippets = () => {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:8000/snippets/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/snippets/${id}`, {
         withCredentials: true,
       });
       setMySnippet(mySnippet.filter((s) => s._id !== id));

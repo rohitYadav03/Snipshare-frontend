@@ -15,7 +15,7 @@ const createSnippet = async (e) => {
 
   try {
     const res = await axios.post(
-      "http://localhost:8000/snippets",
+      `${import.meta.env.VITE_API_BASE_URL}/snippets`,
       { title, code, language, isPublic },
       { withCredentials: true }
     );

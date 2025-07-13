@@ -1,4 +1,3 @@
-// src/components/PublicSnippet.jsx
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -10,7 +9,7 @@ const PublicSnippet = () => {
 
   const fetchSnippet = async () => {
     try {
-      const res = await axios.get(`http://localhost:8000/snippets/public/${id}`);
+      const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/snippets/public/${id}`);
       setSnippet(res.data.snippet);
       setMessage("");
     } catch (error) {

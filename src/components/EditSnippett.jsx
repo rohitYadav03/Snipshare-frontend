@@ -11,7 +11,7 @@ const EditSnippet = () => {
 
   const fetchSnippet = async () => {
     try {
-      const res = await axios.get(`http://localhost:8000/snippets/${id}`, {
+      const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/snippets/${id}`, {
         withCredentials: true,
       });
       setSnippet(res.data.snippet);
@@ -28,7 +28,7 @@ const EditSnippet = () => {
     e.preventDefault();
     try {
       const res = await axios.patch(
-        `http://localhost:8000/snippets/${id}`,
+        `${import.meta.env.VITE_API_BASE_URL}/snippets/${id}`,
         {
           title: snippet.title,
           code: snippet.code,
