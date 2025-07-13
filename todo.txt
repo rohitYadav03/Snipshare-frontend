@@ -1,0 +1,117 @@
+
+| Page/Component         | Description                                                                        |
+| ---------------------- | ---------------------------------------------------------------------------------- |
+| 🔧 `NewSnippet.jsx`    | Form to create new snippet (connects to `POST /snippets`)                          |
+| 🔧 `MySnippets.jsx`    | List of logged-in user's snippets (`GET /snippets`)                                |
+| 🔧 `SnippetDetail.jsx` | View a single snippet in detail (`GET /snippets/:id`)                              |
+| 🔧 `EditSnippet.jsx`   | Edit snippet if owned (`PATCH /snippets/:id`)                                      |
+| 🔧 `ProfileEdit.jsx`   | Edit name/email (`PATCH /profile`) and change password (`PATCH /profile/password`) |
+| ✅ Logout button        | Already handled in `DashboardHeader`                                               |
+| 🧭 Routing             | Setup routes for all the above using `React Router`                                |
+| ✅ JWT Auth + Cookies   | Already integrated with backend on login/logout                                    |
+| ⚙️ Auth Guard          | Protect dashboard, new snippet, my snippets pages from unauthenticated users       |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+🔁 Frontend Flow of SnipShare (Full App)
+🏁 1. Entry Point:
+User visits the root URL (/)
+
+They see the Home page (<Home />)
+
+Message: “Welcome to SnipShare”
+
+CTA: "Get Started" → navigates to /login or /signup
+
+🔐 2. Authentication Flow:
+✅ Login Flow:
+User logs in at /login
+
+On success:
+
+JWT token stored in cookies
+
+Navigate to: /profile
+
+🆕 Signup Flow:
+New users can register at /signup
+
+On success:
+
+Auto-login or redirect to /login
+
+👤 3. User Dashboard (After Login)
+📄 Profile Page (/profile)
+Shows user info (name, email)
+
+Button to edit profile or logout
+
+🧩 My Snippets (/snippets)
+List of all user-created snippets
+
+Each snippet shows title, code, language
+
+Options: View | Edit | Delete
+
+➕ 4. CRUD Flow for Snippets
+🆕 /snippets/new
+Form to create a new snippet
+
+Fields: title, code, language, isPublic
+
+🧾 /snippets/:id
+View full snippet (if:
+
+public OR
+
+user is the owner)
+
+✏️ /snippets/:id/edit
+Update title, code, language, isPublic
+
+🌐 5. Public Snippet Explore Page
+Route: /explore
+
+Shows all public snippets
+
+Anyone can see them
+
+🚪 6. Logout
+Clears the cookie
+
+Redirects to /login
+
+🧱 Layout Structure
+App uses AppLayout: Header, Content, Footer
+
+Routes wrapped inside <Routes> in App.jsx
+
+Conditionally render links like:
+
+Show Login/Signup when unauthenticated
+
+Show Profile/Logout when logged in
+
+⚙️ Additional Notes
+You'll use axios with withCredentials: true for secure requests
+
+Use react-router-dom to navigate between pages
+
+Basic auth state can be tracked via:
+
+A useEffect to check login status (ping backend)
+
+OR a simple isLoggedIn state set after login
+
